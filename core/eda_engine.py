@@ -3252,18 +3252,20 @@ class RobustAutomatedInsightGenerator:
                     self.categorical_cols.append(col)
     
     def _is_datetime_column(self, series: pd.Series) -> bool:
-        """Check if column contains datetime data"""
-        try:
-            # Check if already datetime
-            if pd.api.types.is_datetime64_any_dtype(series):
-                return True
-            
-            # Try to convert sample to datetime
-            sample = series.head(min(100, len(series)))
-            pd.to_datetime(sample, errors='raise')
+        if pd.api.types.is_datetime64_any_dtype(series):
             return True
-        except:
-            return False
+    
+        if pd.api.types.is_object_dtype(series) or pd.api.types.is_string_dtype(series):
+            try:
+                sample = series.dropna().head(100) 
+                parsed = pd.to_datetime(sample, errors='coerce', infer_datetime_format=True)
+    
+                return parsed.notna().mean() > 0.8
+            except:
+                return False
+
+    return False
+
     
     def _is_boolean_column(self, series: pd.Series) -> bool:
         """Check if column contains boolean data"""
