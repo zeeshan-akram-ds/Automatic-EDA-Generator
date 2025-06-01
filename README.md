@@ -123,13 +123,13 @@ Cluster your customer data with ease using flexible options and insightful visua
 ## 📸 Screenshots
 
 ### EDA Generator – Multivariate Analysis
-<img src="screenshots/eda_multivariate.png" width="800"/>
+<img src="screenshots/mutual_info.png" width="800"/>
 
 ### Segmentation Module – PCA Visualization
-<img src="screenshots/segmentation_pca.png" width="800"/>
+<img src="screenshots/pca-plot.png" width="800"/>
 
 ### Advanced Insights & Recommendations
-<img src="screenshots/advanced_insights.png" width="800"/>
+<img src="screenshots/joint_plot.png" width="800"/>
 
 >  You can add your own dataset and instantly generate these types of visualizations.
 ## Author
